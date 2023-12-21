@@ -16,7 +16,7 @@ class PostComment extends React.Component {
         const tokenAPI = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTg0NWE4NWI1MjViYjAwMThlZDA4OTIiLCJpYXQiOjE3MDMxNzI3NDEsImV4cCI6MTcwNDM4MjM0MX0.MqyGj9rVA73xnyHt6rWKry33R2TRIinH6ycjbB6NUUE'
     
         try {
-            const response = await axios.post(`https://striveschool-api.herokuapp.com/api/books/comments/`, {
+            const response = await axios.post(`https://striveschool-api.herokuapp.com/api/books/comments/${bookId}`, {
                 comment: this.state.comment,
             }, {
                 headers: {

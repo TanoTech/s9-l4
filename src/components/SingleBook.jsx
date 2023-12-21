@@ -31,15 +31,14 @@ class SingleBook extends React.Component {
                     </Modal.Header>
                     <Modal.Body className='d-flex'>
                         <img src={book.img} alt={book.title} className="img-fluid" />
-                        <p>User rating:</p>
-                        <GetComment bookId={book.asin} />
+                        <div className='d-flex flex-column'>
+                            <p>User rating:</p>
+                            <GetComment bookId={book.asin} />
+                        </div>
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="success" href="#">
                             Compra adesso
-                        </Button>
-                        <Button variant="danger" onClick={this.toggleModal}>
-                            Chiudi
                         </Button>
                     </Modal.Footer>
                     <PostComment bookId={book.asin} />
