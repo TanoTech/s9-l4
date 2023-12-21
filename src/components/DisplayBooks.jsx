@@ -6,27 +6,19 @@ import romance from '../data/romance.json';
 import scifi from '../data/scifi.json';
 import { Container, Row, Col, Card, ListGroup, Carousel } from "react-bootstrap";
 import './DisplayBooks.css';
+import SingleBook from "./SingleBook";
 
 class DisplayBooks extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            selectedAsin: null
-        };
-    }
-
-    handleBookClick = (asin) => {
-        this.setState({ selectedAsin: asin });
-        console.log("Libro selezionato:", asin)
     };
 
     render() {
-        const { selectedAsin } = this.state;
         const { searchQuery } = this.props;
 
         const filteredFantasy = searchQuery ? fantasy.filter((libro) =>
             libro.title.toLowerCase().includes(searchQuery.toLowerCase())
-        ) : fantasy ;
+        ) : fantasy;
 
         const filteredHorror = searchQuery ? horror.filter((libro) =>
             libro.title.toLowerCase().includes(searchQuery.toLowerCase())
@@ -42,7 +34,7 @@ class DisplayBooks extends React.Component {
         const filteredRomance = searchQuery ? romance.filter((libro) =>
             libro.title.toLowerCase().includes(searchQuery.toLowerCase())
         ) : romance;
-    
+
         return (
             <Container>
                 <h1>Fantasy</h1>
@@ -51,18 +43,7 @@ class DisplayBooks extends React.Component {
                         <Row>
                             {filteredFantasy.slice(0, 6).map((libro, index) => (
                                 <Col key={index} lg={2} md={3} xs={7} sm={5}>
-                                    <Card style={{ width: '100%' }}
-                                        className={selectedAsin === libro.asin ? "selected-book" : ""}
-                                        onClick={() => this.handleBookClick(libro.asin)}>
-                                        <Card.Img variant="top" src={libro.img} className="img-fluid" />
-                                        <Card.Body className={selectedAsin === libro.asin ? "d-block" : "d-none"}>
-                                            <Card.Title>{libro.title}</Card.Title>
-                                        </Card.Body>
-                                        <ListGroup className="list-group-flush">
-                                            <ListGroup.Item> {libro.price} €</ListGroup.Item>
-                                            <ListGroup.Item><a href="#">Compra adesso</a></ListGroup.Item>
-                                        </ListGroup>
-                                    </Card>
+                                    <SingleBook book={libro} />
                                 </Col>
                             ))}
                         </Row>
@@ -71,18 +52,7 @@ class DisplayBooks extends React.Component {
                         <Row>
                             {filteredFantasy.slice(6, 12).map((libro, index) => (
                                 <Col key={index} md={2} xs={12} sm={6}>
-                                    <Card style={{ width: '100%' }}
-                                        className={selectedAsin === libro.asin ? "selected-book" : ""}
-                                        onClick={() => this.handleBookClick(libro.asin)}>
-                                        <Card.Img variant="top" src={libro.img} />
-                                        <Card.Body className={selectedAsin === libro.asin ? "d-block" : "d-none"}>
-                                            <Card.Title>{libro.title}</Card.Title>
-                                        </Card.Body>
-                                        <ListGroup className="list-group-flush">
-                                            <ListGroup.Item> {libro.price} €</ListGroup.Item>
-                                            <ListGroup.Item><a href="#">Compra adesso</a></ListGroup.Item>
-                                        </ListGroup>
-                                    </Card>
+                                    <SingleBook book={libro} />
                                 </Col>
                             ))}
                         </Row>
@@ -91,18 +61,7 @@ class DisplayBooks extends React.Component {
                         <Row>
                             {filteredFantasy.slice(12, 18).map((libro, index) => (
                                 <Col key={index} md={2} xs={12} sm={6}>
-                                    <Card style={{ width: '100%' }}
-                                        className={selectedAsin === libro.asin ? "selected-book" : ""}
-                                        onClick={() => this.handleBookClick(libro.asin)}>
-                                        <Card.Img variant="top" src={libro.img} />
-                                        <Card.Body className={selectedAsin === libro.asin ? "d-block" : "d-none"}>
-                                            <Card.Title>{libro.title}</Card.Title>
-                                        </Card.Body>
-                                        <ListGroup className="list-group-flush">
-                                            <ListGroup.Item> {libro.price} €</ListGroup.Item>
-                                            <ListGroup.Item><a href="#">Compra adesso</a></ListGroup.Item>
-                                        </ListGroup>
-                                    </Card>
+                                    <SingleBook book={libro} />
                                 </Col>
                             ))}
                         </Row>
@@ -111,18 +70,7 @@ class DisplayBooks extends React.Component {
                         <Row>
                             {filteredFantasy.slice(18, 24).map((libro, index) => (
                                 <Col key={index} md={2} xs={12} sm={6}>
-                                    <Card style={{ width: '100%' }}
-                                        className={selectedAsin === libro.asin ? "selected-book" : ""}
-                                        onClick={() => this.handleBookClick(libro.asin)}>
-                                        <Card.Img variant="top" src={libro.img} />
-                                        <Card.Body className={selectedAsin === libro.asin ? "d-block" : "d-none"}>
-                                            <Card.Title>{libro.title}</Card.Title>
-                                        </Card.Body>
-                                        <ListGroup className="list-group-flush">
-                                            <ListGroup.Item> {libro.price} €</ListGroup.Item>
-                                            <ListGroup.Item><a href="#">Compra adesso</a></ListGroup.Item>
-                                        </ListGroup>
-                                    </Card>
+                                    <SingleBook book={libro} />
                                 </Col>
                             ))}
                         </Row>
@@ -131,18 +79,7 @@ class DisplayBooks extends React.Component {
                         <Row>
                             {filteredFantasy.slice(24, 30).map((libro, index) => (
                                 <Col key={index} md={2} xs={12} sm={6}>
-                                    <Card style={{ width: '100%' }}
-                                        className={selectedAsin === libro.asin ? "selected-book" : ""}
-                                        onClick={() => this.handleBookClick(libro.asin)}>
-                                        <Card.Img variant="top" src={libro.img} />
-                                        <Card.Body className={selectedAsin === libro.asin ? "d-block" : "d-none"}>
-                                            <Card.Title>{libro.title}</Card.Title>
-                                        </Card.Body>
-                                        <ListGroup className="list-group-flush">
-                                            <ListGroup.Item> {libro.price} €</ListGroup.Item>
-                                            <ListGroup.Item><a href="#">Compra adesso</a></ListGroup.Item>
-                                        </ListGroup>
-                                    </Card>
+                                    <SingleBook book={libro} />
                                 </Col>
                             ))}
                         </Row>
@@ -154,18 +91,7 @@ class DisplayBooks extends React.Component {
                         <Row>
                             {filteredHistory.slice(0, 6).map((libro, index) => (
                                 <Col key={index} md={2} xs={12} sm={6}>
-                                    <Card style={{ width: '100%' }}
-                                        className={selectedAsin === libro.asin ? "selected-book" : ""}
-                                        onClick={() => this.handleBookClick(libro.asin)}>
-                                        <Card.Img variant="top" src={libro.img} />
-                                        <Card.Body className={selectedAsin === libro.asin ? "d-block" : "d-none"}>
-                                            <Card.Title>{libro.title}</Card.Title>
-                                        </Card.Body>
-                                        <ListGroup className="list-group-flush">
-                                            <ListGroup.Item> {libro.price} €</ListGroup.Item>
-                                            <ListGroup.Item><a href="#">Compra adesso</a></ListGroup.Item>
-                                        </ListGroup>
-                                    </Card>
+                                    <SingleBook book={libro} />
                                 </Col>
                             ))}
                         </Row>
@@ -174,18 +100,7 @@ class DisplayBooks extends React.Component {
                         <Row>
                             {filteredHistory.slice(6, 12).map((libro, index) => (
                                 <Col key={index} md={2} xs={12} sm={6}>
-                                    <Card style={{ width: '100%' }}
-                                        className={selectedAsin === libro.asin ? "selected-book" : ""}
-                                        onClick={() => this.handleBookClick(libro.asin)}>
-                                        <Card.Img variant="top" src={libro.img} />
-                                        <Card.Body className={selectedAsin === libro.asin ? "d-block" : "d-none"}>
-                                            <Card.Title>{libro.title}</Card.Title>
-                                        </Card.Body>
-                                        <ListGroup className="list-group-flush">
-                                            <ListGroup.Item> {libro.price} €</ListGroup.Item>
-                                            <ListGroup.Item><a href="#">Compra adesso</a></ListGroup.Item>
-                                        </ListGroup>
-                                    </Card>
+                                    <SingleBook book={libro} />
                                 </Col>
                             ))}
                         </Row>
@@ -194,58 +109,25 @@ class DisplayBooks extends React.Component {
                         <Row>
                             {history.slice(12, 18).map((libro, index) => (
                                 <Col key={index} md={2} xs={12} sm={6}>
-                                    <Card style={{ width: '100%' }}
-                                        className={selectedAsin === libro.asin ? "selected-book" : ""}
-                                        onClick={() => this.handleBookClick(libro.asin)}>
-                                        <Card.Img variant="top" src={libro.img} />
-                                        <Card.Body className={selectedAsin === libro.asin ? "d-block" : "d-none"}>
-                                            <Card.Title>{libro.title}</Card.Title>
-                                        </Card.Body>
-                                        <ListGroup className="list-group-flush">
-                                            <ListGroup.Item> {libro.price} €</ListGroup.Item>
-                                            <ListGroup.Item><a href="#">Compra adesso</a></ListGroup.Item>
-                                        </ListGroup>
-                                    </Card>
+                                    <SingleBook book={libro} />
                                 </Col>
                             ))}
                         </Row>
                     </Carousel.Item>
                     <Carousel.Item>
                         <Row>
-                            {history.slice(18, 24).map((libro, index) => (
+                            {filteredHistory.slice(18, 24).map((libro, index) => (
                                 <Col key={index} md={2} xs={12} sm={6}>
-                                    <Card style={{ width: '100%' }}
-                                        className={selectedAsin === libro.asin ? "selected-book" : ""}
-                                        onClick={() => this.handleBookClick(libro.asin)}>
-                                        <Card.Img variant="top" src={libro.img} />
-                                        <Card.Body className={selectedAsin === libro.asin ? "d-block" : "d-none"}>
-                                            <Card.Title>{libro.title}</Card.Title>
-                                        </Card.Body>
-                                        <ListGroup className="list-group-flush">
-                                            <ListGroup.Item> {libro.price} €</ListGroup.Item>
-                                            <ListGroup.Item><a href="#">Compra adesso</a></ListGroup.Item>
-                                        </ListGroup>
-                                    </Card>
+                                    <SingleBook book={libro} />
                                 </Col>
                             ))}
                         </Row>
                     </Carousel.Item>
                     <Carousel.Item>
                         <Row>
-                            {history.slice(24, 30).map((libro, index) => (
+                            {filteredHistory.slice(24, 30).map((libro, index) => (
                                 <Col key={index} md={2} xs={12} sm={6}>
-                                    <Card style={{ width: '100%' }}
-                                        className={selectedAsin === libro.asin ? "selected-book" : ""}
-                                        onClick={() => this.handleBookClick(libro.asin)}>
-                                        <Card.Img variant="top" src={libro.img} />
-                                        <Card.Body className={selectedAsin === libro.asin ? "d-block" : "d-none"}>
-                                            <Card.Title>{libro.title}</Card.Title>
-                                        </Card.Body>
-                                        <ListGroup className="list-group-flush">
-                                            <ListGroup.Item> {libro.price} €</ListGroup.Item>
-                                            <ListGroup.Item><a href="#">Compra adesso</a></ListGroup.Item>
-                                        </ListGroup>
-                                    </Card>
+                                    <SingleBook book={libro} />
                                 </Col>
                             ))}
                         </Row>
@@ -255,100 +137,45 @@ class DisplayBooks extends React.Component {
                 <Carousel>
                     <Carousel.Item>
                         <Row>
-                            {horror.slice(0, 6).map((libro, index) => (
+                            {filteredHorror.slice(0, 6).map((libro, index) => (
                                 <Col key={index} md={2} xs={12} sm={6}>
-                                    <Card style={{ width: '100%' }}
-                                        className={selectedAsin === libro.asin ? "selected-book" : ""}
-                                        onClick={() => this.handleBookClick(libro.asin)}>
-                                        <Card.Img variant="top" src={libro.img} />
-                                        <Card.Body className={selectedAsin === libro.asin ? "d-block" : "d-none"}>
-                                            <Card.Title>{libro.title}</Card.Title>
-                                        </Card.Body>
-                                        <ListGroup className="list-group-flush">
-                                            <ListGroup.Item> {libro.price} €</ListGroup.Item>
-                                            <ListGroup.Item><a href="#">Compra adesso</a></ListGroup.Item>
-                                        </ListGroup>
-                                    </Card>
+                                    <SingleBook book={libro} />
                                 </Col>
                             ))}
                         </Row>
                     </Carousel.Item>
                     <Carousel.Item>
                         <Row>
-                            {horror.slice(6, 12).map((libro, index) => (
+                            {filteredHorror.slice(6, 12).map((libro, index) => (
                                 <Col key={index} md={2} xs={12} sm={6}>
-                                    <Card style={{ width: '100%' }}
-                                        className={selectedAsin === libro.asin ? "selected-book" : ""}
-                                        onClick={() => this.handleBookClick(libro.asin)}>
-                                        <Card.Img variant="top" src={libro.img} />
-                                        <Card.Body className={selectedAsin === libro.asin ? "d-block" : "d-none"}>
-                                            <Card.Title>{libro.title}</Card.Title>
-                                        </Card.Body>
-                                        <ListGroup className="list-group-flush">
-                                            <ListGroup.Item> {libro.price} €</ListGroup.Item>
-                                            <ListGroup.Item><a href="#">Compra adesso</a></ListGroup.Item>
-                                        </ListGroup>
-                                    </Card>
+                                    <SingleBook book={libro} />
                                 </Col>
                             ))}
                         </Row>
                     </Carousel.Item>
                     <Carousel.Item>
                         <Row>
-                            {horror.slice(12, 18).map((libro, index) => (
+                            {filteredHorror.slice(12, 18).map((libro, index) => (
                                 <Col key={index} md={2} xs={12} sm={6}>
-                                    <Card style={{ width: '100%' }}
-                                        className={selectedAsin === libro.asin ? "selected-book" : ""}
-                                        onClick={() => this.handleBookClick(libro.asin)}>
-                                        <Card.Img variant="top" src={libro.img} />
-                                        <Card.Body className={selectedAsin === libro.asin ? "d-block" : "d-none"}>
-                                            <Card.Title>{libro.title}</Card.Title>
-                                        </Card.Body>
-                                        <ListGroup className="list-group-flush">
-                                            <ListGroup.Item> {libro.price} €</ListGroup.Item>
-                                            <ListGroup.Item><a href="#">Compra adesso</a></ListGroup.Item>
-                                        </ListGroup>
-                                    </Card>
+                                    <SingleBook book={libro} />
                                 </Col>
                             ))}
                         </Row>
                     </Carousel.Item>
                     <Carousel.Item>
                         <Row>
-                            {horror.slice(18, 24).map((libro, index) => (
+                            {filteredHorror.slice(18, 24).map((libro, index) => (
                                 <Col key={index} md={2} xs={12} sm={6}>
-                                    <Card style={{ width: '100%' }}
-                                        className={selectedAsin === libro.asin ? "selected-book" : ""}
-                                        onClick={() => this.handleBookClick(libro.asin)}>
-                                        <Card.Img variant="top" src={libro.img} />
-                                        <Card.Body className={selectedAsin === libro.asin ? "d-block" : "d-none"}>
-                                            <Card.Title>{libro.title}</Card.Title>
-                                        </Card.Body>
-                                        <ListGroup className="list-group-flush">
-                                            <ListGroup.Item> {libro.price} €</ListGroup.Item>
-                                            <ListGroup.Item><a href="#">Compra adesso</a></ListGroup.Item>
-                                        </ListGroup>
-                                    </Card>
+                                    <SingleBook book={libro} />
                                 </Col>
                             ))}
                         </Row>
                     </Carousel.Item>
                     <Carousel.Item>
                         <Row>
-                            {horror.slice(24, 30).map((libro, index) => (
+                            {filteredHorror.slice(24, 30).map((libro, index) => (
                                 <Col key={index} md={2} xs={12} sm={6}>
-                                    <Card style={{ width: '100%' }}
-                                        className={selectedAsin === libro.asin ? "selected-book" : ""}
-                                        onClick={() => this.handleBookClick(libro.asin)}>
-                                        <Card.Img variant="top" src={libro.img} />
-                                        <Card.Body className={selectedAsin === libro.asin ? "d-block" : "d-none"}>
-                                            <Card.Title>{libro.title}</Card.Title>
-                                        </Card.Body>
-                                        <ListGroup className="list-group-flush">
-                                            <ListGroup.Item> {libro.price} €</ListGroup.Item>
-                                            <ListGroup.Item><a href="#">Compra adesso</a></ListGroup.Item>
-                                        </ListGroup>
-                                    </Card>
+                                    <SingleBook book={libro} />
                                 </Col>
                             ))}
                         </Row>
@@ -358,100 +185,45 @@ class DisplayBooks extends React.Component {
                 <Carousel>
                     <Carousel.Item>
                         <Row>
-                            {romance.slice(0, 6).map((libro, index) => (
+                            {filteredRomance.slice(0, 6).map((libro, index) => (
                                 <Col key={index} md={2} xs={12} sm={6}>
-                                    <Card style={{ width: '100%' }}
-                                        className={selectedAsin === libro.asin ? "selected-book" : ""}
-                                        onClick={() => this.handleBookClick(libro.asin)}>
-                                        <Card.Img variant="top" src={libro.img} />
-                                        <Card.Body className={selectedAsin === libro.asin ? "d-block" : "d-none"}>
-                                            <Card.Title>{libro.title}</Card.Title>
-                                        </Card.Body>
-                                        <ListGroup className="list-group-flush">
-                                            <ListGroup.Item> {libro.price} €</ListGroup.Item>
-                                            <ListGroup.Item><a href="#">Compra adesso</a></ListGroup.Item>
-                                        </ListGroup>
-                                    </Card>
+                                    <SingleBook book={libro} />
                                 </Col>
                             ))}
                         </Row>
                     </Carousel.Item>
                     <Carousel.Item>
                         <Row>
-                            {romance.slice(6, 12).map((libro, index) => (
+                            {filteredRomance.slice(6, 12).map((libro, index) => (
                                 <Col key={index} md={2} xs={12} sm={6}>
-                                    <Card style={{ width: '100%' }}
-                                        className={selectedAsin === libro.asin ? "selected-book" : ""}
-                                        onClick={() => this.handleBookClick(libro.asin)}>
-                                        <Card.Img variant="top" src={libro.img} />
-                                        <Card.Body className={selectedAsin === libro.asin ? "d-block" : "d-none"}>
-                                            <Card.Title>{libro.title}</Card.Title>
-                                        </Card.Body>
-                                        <ListGroup className="list-group-flush">
-                                            <ListGroup.Item> {libro.price} €</ListGroup.Item>
-                                            <ListGroup.Item><a href="#">Compra adesso</a></ListGroup.Item>
-                                        </ListGroup>
-                                    </Card>
+                                    <SingleBook book={libro} />
                                 </Col>
                             ))}
                         </Row>
                     </Carousel.Item>
                     <Carousel.Item>
                         <Row>
-                            {romance.slice(12, 18).map((libro, index) => (
+                            {filteredRomance.slice(12, 18).map((libro, index) => (
                                 <Col key={index} md={2} xs={12} sm={6}>
-                                    <Card style={{ width: '100%' }}
-                                        className={selectedAsin === libro.asin ? "selected-book" : ""}
-                                        onClick={() => this.handleBookClick(libro.asin)}>
-                                        <Card.Img variant="top" src={libro.img} />
-                                        <Card.Body className={selectedAsin === libro.asin ? "d-block" : "d-none"}>
-                                            <Card.Title>{libro.title}</Card.Title>
-                                        </Card.Body>
-                                        <ListGroup className="list-group-flush">
-                                            <ListGroup.Item> {libro.price} €</ListGroup.Item>
-                                            <ListGroup.Item><a href="#">Compra adesso</a></ListGroup.Item>
-                                        </ListGroup>
-                                    </Card>
+                                    <SingleBook book={libro} />
                                 </Col>
                             ))}
                         </Row>
                     </Carousel.Item>
                     <Carousel.Item>
                         <Row>
-                            {romance.slice(18, 24).map((libro, index) => (
+                            {filteredRomance.slice(18, 24).map((libro, index) => (
                                 <Col key={index} md={2} xs={12} sm={6}>
-                                    <Card style={{ width: '100%' }}
-                                        className={selectedAsin === libro.asin ? "selected-book" : ""}
-                                        onClick={() => this.handleBookClick(libro.asin)}>
-                                        <Card.Img variant="top" src={libro.img} />
-                                        <Card.Body className={selectedAsin === libro.asin ? "d-block" : "d-none"}>
-                                            <Card.Title>{libro.title}</Card.Title>
-                                        </Card.Body>
-                                        <ListGroup className="list-group-flush">
-                                            <ListGroup.Item> {libro.price} €</ListGroup.Item>
-                                            <ListGroup.Item><a href="#">Compra adesso</a></ListGroup.Item>
-                                        </ListGroup>
-                                    </Card>
+                                    <SingleBook book={libro} />
                                 </Col>
                             ))}
                         </Row>
                     </Carousel.Item>
                     <Carousel.Item>
                         <Row>
-                            {romance.slice(24, 30).map((libro, index) => (
+                            {filteredRomance.slice(24, 30).map((libro, index) => (
                                 <Col key={index} md={2} xs={12} sm={6}>
-                                    <Card style={{ width: '100%' }}
-                                        className={selectedAsin === libro.asin ? "selected-book" : ""}
-                                        onClick={() => this.handleBookClick(libro.asin)}>
-                                        <Card.Img variant="top" src={libro.img} />
-                                        <Card.Body className={selectedAsin === libro.asin ? "d-block" : "d-none"}>
-                                            <Card.Title>{libro.title}</Card.Title>
-                                        </Card.Body>
-                                        <ListGroup className="list-group-flush">
-                                            <ListGroup.Item> {libro.price} €</ListGroup.Item>
-                                            <ListGroup.Item><a href="#">Compra adesso</a></ListGroup.Item>
-                                        </ListGroup>
-                                    </Card>
+                                    <SingleBook book={libro} />
                                 </Col>
                             ))}
                         </Row>
@@ -461,98 +233,45 @@ class DisplayBooks extends React.Component {
                 <Carousel>
                     <Carousel.Item>
                         <Row>
-                            {scifi.slice(0, 6).map((libro, index) => (
+                            {filteredScifi.slice(0, 6).map((libro, index) => (
                                 <Col key={index} md={2} xs={12} sm={6}>
-                                    <Card style={{ width: '100%' }}
-                                        className={selectedAsin === libro.asin ? "selected-book" : ""}
-                                        onClick={() => this.handleBookClick(libro.asin)}>
-                                        <Card.Img variant="top" src={libro.img} />
-                                        <Card.Body className={selectedAsin === libro.asin ? "d-block" : "d-none"}>
-                                            <Card.Title>{libro.title}</Card.Title>
-                                        </Card.Body>
-                                        <ListGroup className="list-group-flush">
-                                            <ListGroup.Item> {libro.price} €</ListGroup.Item>
-                                            <ListGroup.Item><a href="#">Compra adesso</a></ListGroup.Item>
-                                        </ListGroup>
-                                    </Card>
+                                    <SingleBook book={libro} />
                                 </Col>
                             ))}
                         </Row>
                     </Carousel.Item>
                     <Carousel.Item>
                         <Row>
-                            {scifi.slice(6, 12).map((libro, index) => (
+                            {filteredScifi.slice(6, 12).map((libro, index) => (
                                 <Col key={index} md={2} xs={12} sm={6}>
-                                    <Card style={{ width: '100%' }}
-                                        className={selectedAsin === libro.asin ? "selected-book" : ""}
-                                        onClick={() => this.handleBookClick(libro.asin)}>
-                                        <Card.Img variant="top" src={libro.img} />
-                                        <Card.Body className={selectedAsin === libro.asin ? "d-block" : "d-none"}>
-                                            <Card.Title>{libro.title}</Card.Title>
-                                        </Card.Body>
-                                        <ListGroup className="list-group-flush">
-                                            <ListGroup.Item> {libro.price} €</ListGroup.Item>
-                                            <ListGroup.Item><a href="#">Compra adesso</a></ListGroup.Item>
-                                        </ListGroup>
-                                    </Card>
+                                    <SingleBook book={libro} />
                                 </Col>
                             ))}
                         </Row>
                     </Carousel.Item>
                     <Carousel.Item>
                         <Row>
-                            {scifi.slice(12, 18).map((libro, index) => (
+                            {filteredScifi.slice(12, 18).map((libro, index) => (
                                 <Col key={index} md={2} xs={12} sm={6}>
-                                    <Card style={{ width: '100%' }}
-                                        className={selectedAsin === libro.asin ? "selected-book" : ""}
-                                        onClick={() => this.handleBookClick(libro.asin)}>
-                                        <Card.Img variant="top" src={libro.img} />
-                                        <Card.Body className={selectedAsin === libro.asin ? "d-block" : "d-none"}>
-                                            <Card.Title>{libro.title}</Card.Title>
-                                        </Card.Body>
-                                        <ListGroup className="list-group-flush">
-                                            <ListGroup.Item> {libro.price} €</ListGroup.Item>
-                                            <ListGroup.Item><a href="#">Compra adesso</a></ListGroup.Item>
-                                        </ListGroup>
-                                    </Card>
+                                    <SingleBook book={libro} />
                                 </Col>
                             ))}
                         </Row>
                     </Carousel.Item>
                     <Carousel.Item>
                         <Row>
-                            {scifi.slice(18, 24).map((libro, index) => (
+                            {filteredScifi.slice(18, 24).map((libro, index) => (
                                 <Col key={index} md={2} xs={12} sm={6}>
-                                    <Card style={{ width: '100%' }}
-                                        className={selectedAsin === libro.asin ? "selected-book" : ""}
-                                        onClick={() => this.handleBookClick(libro.asin)}>
-                                        <Card.Img variant="top" src={libro.img} />
-                                        <Card.Body className={selectedAsin === libro.asin ? "d-block" : "d-none"}>
-                                            <Card.Title>{libro.title}</Card.Title>
-                                        </Card.Body>
-                                        <ListGroup className="list-group-flush">
-                                            <ListGroup.Item> {libro.price} €</ListGroup.Item>
-                                            <ListGroup.Item><a href="#">Compra adesso</a></ListGroup.Item>
-                                        </ListGroup>
-                                    </Card>
+                                    <SingleBook book={libro} />
                                 </Col>
                             ))}
                         </Row>
                     </Carousel.Item>
                     <Carousel.Item>
                         <Row>
-                            {scifi.slice(24, 30).map((libro, index) => (
+                            {filteredScifi.slice(24, 30).map((libro, index) => (
                                 <Col key={index} md={2} xs={12} sm={6}>
-                                    <Card style={{ width: '100%' }}
-                                        className={selectedAsin === libro.asin ? "selected-book" : ""}
-                                        onClick={() => this.handleBookClick(libro.asin)}>
-                                        <Card.Img variant="top" src={libro.img} />
-
-                                        <ListGroup className="list-group-flush">
-                                            <ListGroup.Item> {libro.price} €</ListGroup.Item>
-                                            <ListGroup.Item><a href="#">Compra adesso</a></ListGroup.Item>
-                                        </ListGroup>
-                                    </Card>
+                                    <SingleBook book={libro} />
                                 </Col>
                             ))}
                         </Row>

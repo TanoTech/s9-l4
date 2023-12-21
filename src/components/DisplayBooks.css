@@ -1,6 +1,7 @@
 body {
     background-color: beige;
 }
+
 h1 {
     font-size: 3rem;
     text-transform: uppercase;
@@ -12,14 +13,17 @@ h1 {
 .card {
     border: 2px solid #800000;
     width: auto;
-    img{
+
+    img {
         height: 40vh;
     }
 }
 
-.card-body, .list-group-item {
+.card-body,
+.list-group-item {
     background-color: #800000;
     color: white;
+    text-transform: capitalize;
 }
 
 a {
@@ -29,10 +33,25 @@ a {
 }
 
 .carousel-indicators {
-    display: none!important;
+    display: none !important;
 }
 
-.selected-book{
-   opacity: 80%
+.selected-book {
+    opacity: 80%
 }
 
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: black;
+}
+
+@media screen and (min-width: 650) {
+    .carousel-control-prev {
+        left: -8rem;
+    }
+
+    .carousel-control-next {
+        right: -8rem;
+
+    }
+}
